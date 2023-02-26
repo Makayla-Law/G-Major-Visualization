@@ -1,0 +1,22 @@
+#ssuming seaborn, pandas, and matplotlib are imported and necessary dataframe has been created
+
+plt.rcParams["figure.autolayout"] = True
+
+lav = '#9292dd'
+mycolors = ["#115f9a", "#1984c5", "#22a7f0", "#48b5c4", "#76c68f", "#a6d75b", "#c9d52f", "#d0ee11", lav]
+sns.set_palette(sns.color_palette(mycolors))
+
+y_indexes = np.arange(len(g_df['Major']))
+width = 1.25
+x_labels = [str(i)+'%' for i in (list(set([(i*100)//1 for i in g_df['Unemployment_rate']])))]
+
+ax = sns.barplot(y = y_indexes, x = 'Unemployment_rate', hue = 'Major_category', data = g_df, orient = 'h', dodge = False)
+
+ax.set_yticklabels(labels = ('General Agriculture','Genetics','General Business','General Education','General Engineering','Geological Engineering','General Medical and Health Services', 'Geology', 'Geosciences', 'General Social Sciences', 'Geography', 'Average(All majors)'))
+plt.rc('legend', fontsize= 8)
+plt.rc('ytick', labelsize= 8)
+plt.rc('xtick', labelsize= 10)
+plt.rc('axes', labelsize= 10)
+plt.xlabel(xlabel = 'Unemployment rate')
+plt.legend(loc=5, bbox_to_anchor = (1.8,0.75))
+plt.savefig('grouped_g_majors_with_avg')
