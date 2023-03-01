@@ -1,0 +1,11 @@
+ax = sns.barplot(y ='Major', x = 'P25th', hue = 'Major_category', data = g_df, orient = 'h', dodge = False)
+
+ax.set_yticklabels(labels = (majors))
+ax.set_ylabel(None)
+ax.set_xlabel(None)
+ax.set_title(label = '25th Percentile Salaries')
+plt.grid(linewidth = 0.25)
+plt.rcParams["figure.figsize"] = (5,3)
+ax.xaxis.set_major_formatter(mtick.StrMethodFormatter('${x:,.0f}'))
+plt.legend(loc=5, bbox_to_anchor = (1.75,0.65))
+plt.savefig('lower25th',dpi=300, bbox_inches = "tight")
